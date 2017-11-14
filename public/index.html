@@ -103,10 +103,10 @@
                 $scope.goFor = function(url) {
                     $location.path(url);
                 }
-                // $scope.goToUsluga = function(url, usluga){
-                //     $location.path(url);
-                //     $scope.uslugaInfo = usluga;
-                // }
+                $scope.goToUsluga = function(url, usluga){
+                    $location.path(url);
+                    $scope.uslugaInfo = usluga;
+                }
             })
             .controller("addPatientController", function($scope, localStorageService) {
                 var self = $scope;
