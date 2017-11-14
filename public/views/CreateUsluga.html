@@ -1,0 +1,16 @@
+<div class="usluga">
+    <div>
+        <h3>Добавить Услугу</h3>
+    </div>
+    <div>
+        <div>Название услуги</div>
+        <input class="" type="text" ng-model="usluga.name">
+    </div>
+    <div>
+        <button class="" ng-click="CreateUsluga()">Add usluga</button>
+    </div>
+    <div ng-repeat="usluga in uslugi">{{usluga.name}}</div>
+    <div class="usluga">
+        <h3>Услуги: {{usluga.name}}</h3>
+    </div>
+</div>

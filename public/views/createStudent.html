@@ -1,0 +1,28 @@
+<div class="student">
+	<div>
+		<h3>Добавить студента</h3>
+	</div>
+	<div>
+		<div>Введите имя</div>
+		<input class="input1" type="text" ng-model="student.name" placeholder="Name">
+	</div>
+	<div>
+		<div>Введите фамилию</div>
+		<input class="input1" type="text" ng-model="student.surname" placeholder="Surname">
+	</div>
+	<div>
+		<div>Введите GPA</div>
+		<input class="input1" type="text" ng-model="student.GPA" placeholder="GPA">
+	</div>
+	<div>
+		<div>Введите курс</div>
+		<input class="input1" type="text" ng-model="student.cource" placeholder="Cource">
+	</div>
+	<div>
+		<div>Выберите группу</div>
+		<div class="div1" ng-repeat="group in groups" ng-click="pickGroup(group)">{{group.name}}</div>
+	</div>
+	<div>
+		<button class="but1 tenpx" ng-click="CreateStudent()">Add student</button>
+	</div>
+</div>
