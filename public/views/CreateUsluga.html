@@ -9,8 +9,9 @@
     <div>
         <button class="" ng-click="CreateUsluga()">Add usluga</button>
     </div>
-    <div ng-repeat="usluga in uslugi">{{usluga.name}}</div>
+   
     <div class="usluga">
         <h3>Услуги: {{usluga.name}}</h3>
+         <div ng-repeat="usluga in uslugi">{{usluga.name}}</div>
     </div>
 </div>

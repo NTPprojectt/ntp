@@ -58,6 +58,12 @@
                     $scope.groups = [];
                     localStorageService.set("message", $scope.groups)
                 }
+                 if (localStorageService.get("message1") != null) {
+                    $scope.uslugi = localStorageService.get("message1");
+                } else {
+                    $scope.uslugi = [];
+                    localStorageService.set("message1", $scope.uslugi)
+                }
                 // $scope.uslugaInfo;
                 // $scope.goTo = function(url) {
                 //     $location.path(url);
@@ -88,7 +94,7 @@
             })
             .controller("addUslugaController", function($scope, localStorageService) {
                 var self = $scope;
-                var uslugi = localStorageService.get("message");
+                var uslugi = localStorageService.get("message1");
                 function UslugaClass(name)
                 {
                     this.name = name;  
@@ -96,7 +102,7 @@
                 self.CreateUsluga = function() {
                     var usluga = new UslugaClass(self.usluga.name);
                     uslugi.push(usluga);
-                    localStorageService.set("message", uslugi);
+                    localStorageService.set("message1", uslugi);
                     //console.log(localStorageService.get("message"))
                 }
                 $scope.uslugaInfo;
