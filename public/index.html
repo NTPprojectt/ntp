@@ -114,6 +114,9 @@
                     localStorageService.set("message1", uslugi);
                     //console.log(localStorageService.get("message"))
                 }
+                $scope.deleteUsluga = function(index){ 
+                $scope.uslugi.splice(index, 1); 
+                localStorageService.set("message1", $scope.uslugi);}
                 $scope.uslugaInfo;
                 $scope.goFor = function(url) {
                     $location.path(url);
@@ -139,6 +142,9 @@
                     localStorageService.set("message3", patienty);
                     //console.log(localStorageService.get("message"))
                 }
+                 $scope.deletePatient = function(index){ 
+                $scope.patienty.splice(index, 1); 
+                localStorageService.set("message3", $scope.patienty);}
                  $scope.patientInfo;
                 $scope.goFor = function(url) {
                     $location.path(url);
