@@ -9,6 +9,10 @@
 		.module("Example",['ngRoute', 'LocalStorageModule'])
 			.config(function($routeProvider){
         		$routeProvider
+                .when("/", {
+                    templateUrl : "views/glavnaya.html",
+                    
+                })
 	            .when("/CreateGroup", {
 	                templateUrl : "views/CreateGroup.html",
 	                controller : "addGroupController"
@@ -172,7 +176,7 @@
                 var self = $scope;
                 var group;
                 var usluga;
-                var usligi = localStorageService.get("message1");
+                // var usligi = localStorageService.get("message1");
                 var groups = localStorageService.get("message");
                 function StudentClass(name, surname, GPA, cource)
                 {
@@ -218,8 +222,9 @@
                 self.teacher = self.groupInfo.teacher;
             })
             .controller('ExampleController', function($scope,localStorageService) {
-                $scope.patienty = localStorageService.get("message3");
+               // $scope.patienty = localStorageService.get("message3");
                 $scope.uslugi =  localStorageService.get("message1");
+
                       // $scope.data = {
                       //  model: null,
                       //   availableOptions: [
