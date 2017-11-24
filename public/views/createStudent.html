@@ -1,28 +1,52 @@
 <div class="student">
 	<div>
-		<h3>Добавить студента</h3>
+		<h3>Добавить прием</h3>
 	</div>
 	<div>
-		<div>Введите имя</div>
-		<input class="input1" type="text" ng-model="student.name" placeholder="Name">
+		<!-- <div class="div1" ng-repeat="patient in patienty" ng-click="pickPatient(patient)">{{patient.name}} 
+		{{patient.surname}}</div> -->
+	<!-- 	<div>
+    <select ng-model="value" ng-options="patient for patient in patienty">{{patient.name}}</select>
+</div> -->
+		<div ng-controller="ExampleController">
+           <form name="myForm">
+            <label for="repeatSelect"> Выберите пациента: </label>
+              <select name="repeatSelect" id="repeatSelect" ng-model="data.model">
+               <option ng-repeat="patient in patienty" value="{{patient.name}}">{{patient.name}}</option>
+              </select>
+           </form>
+         <tt>Пациент : {{data.model}}</tt><br/>
+        </div><br>
+	
 	</div>
+		<!-- <div class="div1" ng-repeat="doctor in doctors" ng-click="pickDoctor(doctor)">{{doctor.name}}</div>
+	</div> -->
 	<div>
-		<div>Введите фамилию</div>
-		<input class="input1" type="text" ng-model="student.surname" placeholder="Surname">
+	<div ng-controller="ExampleController">
+           <form name="myForm">
+            <label for="repeatSelect"> Выберите врача: </label>
+              <select name="repeatSelect" id="repeatSelect" ng-model="data.model">
+               <option ng-repeat="doctor in doctors" value="{{doctor.name}}">{{doctor.name}}</option>
+              </select>
+           </form>
+         <tt>Врач : {{data.model}}</tt><br/>
+        </div>
+        <br>
+        </div>
+	<div>
+		<div ng-controller="ExampleController">
+           <form name="myForm">
+            <label for="repeatSelect"> Выберите услугу: </label>
+              <select name="repeatSelect" id="repeatSelect" ng-model="data.model">
+               <option ng-repeat="usliga in uslugi" value="{{usluga.name}}">{{usluga.name}}</option>
+              </select>
+           </form>
+         <tt>Услуга : {{data.model}}</tt><br/>
+        </div>
+        <br>
 	</div>
+	
 	<div>
-		<div>Введите GPA</div>
-		<input class="input1" type="text" ng-model="student.GPA" placeholder="GPA">
-	</div>
-	<div>
-		<div>Введите курс</div>
-		<input class="input1" type="text" ng-model="student.cource" placeholder="Cource">
-	</div>
-	<div>
-		<div>Выберите группу</div>
-		<div class="div1" ng-repeat="group in groups" ng-click="pickGroup(group)">{{group.name}}</div>
-	</div>
-	<div>
-		<button class="but1 tenpx" ng-click="CreateStudent()">Add student</button>
+		<button class="btn btn-large btn-info" ng-click="CreateStudent()">Add priem</button>
 	</div>
 </div>

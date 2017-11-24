@@ -14,7 +14,16 @@
         <div>Номер</div>
         <input class="" type="text" ng-model="patient.phone">
     </div>
+    <br>
     <div>
-        <button class="" ng-click="CreatePatient()">Add patient</button>
+        <button class="btn btn-large btn-info" ng-click="CreatePatient()">Add patient</button>
+    </div>
+     <div class="patient">
+        <h3>Пациенты: {{patient.name}}</h3>
+         <div ng-repeat="patient in patienty">
+         <h4>{{patient.name}}</h4>
+         <button class="btn btn-danger" ng-click="deleteStudent(student._id)">delete</button>
+         </div>
+
     </div>
 </div>

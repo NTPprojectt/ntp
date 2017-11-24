@@ -14,7 +14,16 @@
         <div>Специализация</div>
         <input class="" type="text" ng-model="doctor.speciality">
     </div>
+    <br>
     <div>
-        <button class="" ng-click="CreateDoctor()">Add doctor</button>
+        <button class="btn btn-large btn-info" ng-click="CreateDoctor()">Add doctor</button>
+    </div>
+    <div class="doctor">
+        <h3>Врачи: </h3>
+         <div ng-repeat="doctor in doctors">
+         <h4>{{doctor.name}} {{doctor.surname}}</h4>
+         <button class="btn btn-danger" ng-click="deleteStudent(student._id)">delete</button>
+         </div>
+
     </div>
 </div>
