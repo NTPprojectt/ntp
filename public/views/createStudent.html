@@ -11,11 +11,11 @@
 		<div ng-controller="ExampleController">
            <form name="myForm">
             <label for="repeatSelect"> Выберите пациента: </label>
-              <select name="repeatSelect" id="repeatSelect" ng-model="data.model">
+              <select name="repeatSelect" id="repeatSelect" ng-model="patient.model">
                <option ng-repeat="patient in patienty" value="{{patient.name}}">{{patient.name}}</option>
               </select>
            </form>
-         <tt>Пациент : {{data.model}}</tt><br/>
+         <tt>Пациент : {{patient.model}}</tt><br/>
         </div><br>
 	
 	<!-- </div> -->
@@ -32,7 +32,7 @@
          <tt>Врач : {{data.model}}</tt><br/>
         </div>
         <br>
-        </div>
+       
        
 	<!-- <div> -->
 		<div ng-controller="ExampleController">
