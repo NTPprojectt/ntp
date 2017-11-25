@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="en">
+<head>        
+    <meta charset="UTF-8">
+    <title>Document</title> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>    
+    <!-- <script>
+        var app = angular.module("app",[]);
+        app.controller("appController", function($scope){
+            $scope.vrachi=[];
+            $scope.uslugi=[];
+            $scope.priem=[];
+            $scope.pacient;
+            $scope.modalForm='f';
+            app.config(function($routeProvider)
+            {
+                $routeProvider
+                .when("/AddVrach",{
+                    templateUrl : "views/AddVrach.html",
+                    controller : "addVrach"
+                })
+                .when("/AddUsluga",{
+                    templateUrl : "views/AddUsluga.html",
+                    controller : "addUsluga"
+                })
+                .when("/AddPacient",{
+                    templateUrl : "views/AddPacient.html",
+                    controller : "addPacient"
+                })
+                .when("/AddPriem",{
+                    templateUrl : "/views/AddPriem.html",
+                    controller : "addPriem"
+                })
+            })
+            app.controller("addVrach",function($scope)
+            {
+                function VrachClass(name,surname,specality)
+                {
+                    this.name=name;
+                    this.surname=surname;
+                    this.specality=specality;
+                }
+                $scope.AddVrach=function()
+                {
+                    var vrach= new VrachClass($scope.vrach.name,$scope.vrach.surname,$scope.vrach.specality)
+                    $scope.vrachi.push(vrach);
+                }
+            })
+            app.controller("addUsluga",function($scope)
+            {
+                function UslugaClass(name,price)
+                {
+                    this.name=name;
+                    this.price=price;
+                }
+                $scope.AddUsluga=function()
+                {
+                    var usluga = new UslugaClass($scope.usluga.name,$scope.usluga.price)
+                    $scope.uslugi.push(usluga);
+                }
+            })
+            app.controller("addPriem",function($scope){
+                function PriemClass(number,usluga,pacient)
+                {
+                    this.number=number;
+                    this.usluga=usluga;
+                    this.pacient=pacient
+                }
+                $scope.AddPriem=function()
+                {
+                    var group = new PriemClass($scope.priem.nubmer,[],"")
+
+                }
+                $scope.AddP = function(){
+                    $scope.modalForm='t';
+                }
+            })
+            app.controller("addPacient",function($scope){
+                function PacientClass(firstName,lastName,phone)
+                {
+                    this.firstName=firstName;
+                    this.lastName=lastName;
+                    this.phone=phone;
+                }
+                $scope.AddPacient=function()
+                {
+                   var pacient = new Pacient($scope.pacient.firstName,$scope.pacient.lastName,$scope.pacient.phone)
+                   $scope.pacients.push(pacient);
+                }
+            })
+        })
+    </script>    -->
+</head>
+<body ng-controller="addGroupController">
+    <table border="1">
+        <tbody>
+            <tr>
+                <td></td>
+                <td width="10%">Понедельник</td>
+                <td width="10%">Вторник</td>
+                <td width="10%">Среда</td>
+                <td width="10%">Четверг</td>
+                <td width="10%">Пятница</td>
+                <td width="10%">Суббота</td>
+            </tr>
+            <tr>
+                <td width="10%">9:00-10:00</td>
+                <td>
+                    <div>
+                        <button ng-click="AddP()">Add</button>
+                    </div>
+                    <div>
+                        <p>{{group.code}}</p>
+                        <p>{{group.doctor.name}}</p>
+                        <p>{{group.usluga.name}}</p>
+                    </div>
+                    <div ng-if="modalForm=='t'">
+                   
+                            <div ng-controller="addGroupController">
+                             <div ng-show="groupForm == 'visible'">
+                             <div class="form-group">
+                                    <div>
+                                        <h3>Добавить Группу</h3>
+                                    </div>
+                                    <div>
+                                        <div>Название priema</div>
+                                        <input class="" type="text" ng-model="group.name">
+                                    </div>
+                                    <div>
+                                        <div>Номер приема</div>
+                                        <input class="" type="text" ng-model="group.code">
+                                    </div>
+                                    
+                                
+                                    <Label for="docPage">Doctor: </Label>
+                                    <select name="docPage" ng-model="group.doctor" ng-options="doctor.name for doctor in doctors"></select>
+                                
+                                    <label for="uslPage">Usluga: </label>
+                                    <select name="uslPage" ng-model="group.usluga" ng-options="usluga.name for usluga in uslugi"></select>
+                                
+                                    <Label for="patPage">Patient: </Label>
+                                    <select name="patPage" ng-model="group.patient" ng-options="patient.name for patient in patienty"></select>
+                                
+                                    <div>
+                                        <button class="" ng-click="CreateGroup()">save</button>
+                                    </div>
+                                    
+                                </div>
+                                </div>
+                    </div>
+                    
+                    <div class="form-group">
+                    
+                       <div class="group in groups" ng-hide="groupForm == 'visible'">
+                        <h3>Priem: {{groupInfo.name}}</h3>
+                        </div>
+                         <div class="doctor" ng-hide="groupForm == 'visible'">
+                           <h3>Doctor: {{groupInfo.doctor.name}}</h3>
+                             </div>
+                               <div ng-hide="groupForm == 'visible'">
+                                <h3>Patient: {{groupInfo.patient.name}}</h3>
+                                 </div>
+                                    <div ng-hide="groupForm == 'visible'">
+                                      <h3>Usluga: {{groupInfo.usluga.name}}</h3>
+                                       
+    <!-- <div ng-repeat="group in groups">
+        {{group.name}}
+    </div> -->
+                     </div>
+                     </div>
+
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td width="10%">10:00-11:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td width="10%">11:00-12:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td width="10%">12:00-13:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td width="10%">14:00-15:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td width="10%">15:00-16:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td width="10%">16:00-17:00</td>
+                <td>
+                    <button>Add</button>
+                </td>
+                <td>
+                    <button>Add</button>
+                </td>
+                <td>
+                    <button>Add</button>
+                </td>
+                <td>
+                    <button>Add</button>
+                </td>
+                <td>
+                    <button>Add</button>
+                </td>
+                <td>
+                    <button>Add</button>
+                </td>
+            </tr>
+            <tr>
+                <td width="10%">17:00-18:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>                                    
+        </tbody>
+    </table>
+</body>
+</html>

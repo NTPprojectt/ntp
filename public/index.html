@@ -3,28 +3,15 @@
 <script src="/bower_components/angular/angular.min.js"></script>
 <script src="/bower_components/angular-route/angular-route.js"></script>
 <script src="/bower_components/angular-local-storage.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script type="text/javascript">
 	var app = angular
 		.module("Example",['ngRoute', 'LocalStorageModule'])
 			.config(function($routeProvider){
         		$routeProvider
-                .when("/", {
-                    templateUrl : "views/glavnaya.html",
-                    
-                })
 	            .when("/CreateGroup", {
 	                templateUrl : "views/CreateGroup.html",
 	                controller : "addGroupController"
 	            })
-                .when("/CreateStudent", {
-                    templateUrl : "views/CreateStudent.html",
-                    controller : "studentController",
-                })
-                .when("/CreateTeacher", {
-                    templateUrl : "views/CreateTeacher.html",
-                    controller : "teacherController"
-                })
                 .when("/group", {
                     templateUrl : "views/group.html",
                     controller : "groupController"
@@ -40,6 +27,22 @@
                 .when("/CreateDoctor",{
                     templateUrl:"views/CreateDoctor.html",
                     controller:"addDoctorController"
+                })
+                .when("/ViewDoctors",{
+                    templateUrl:"views/ViewDoctors.html",
+                    controller:"addDoctorController"
+                })
+                .when("/ViewUslugi",{
+                    templateUrl:"views/ViewUslugi.html",
+                    controller:"addUslugaController" 
+                })
+                .when("/ViewPriem",{
+                    templateUrl:"views/ViewPriem.html",
+                    controller:"addGroupController"
+                })
+                .when("/ViewRasp", {
+                    templateUrl:"views/table.html",
+                    controller:"addGroupController"
                 })
     		})
     		.config(function (localStorageServiceProvider) {
@@ -63,6 +66,7 @@
                     $scope.groups = [];
                     localStorageService.set("message", $scope.groups)
                 }
+                
                  if (localStorageService.get("message1") != null) {
                     $scope.uslugi = localStorageService.get("message1");
                 } else {
@@ -80,25 +84,77 @@
                 } else {
                     $scope.patienty = [];
                     localStorageService.set("message3", $scope.patienty)
+                }                
+                if (localStorageService.get("message4") !=null) {
+                    $scope.priems = localStorageService.get("message4");
+                } else {
+                    $scope.priems = [];
+                    localStorageService.set("message4", $scope.priems)
                 }
-                
     		})
             .controller("addGroupController", function($scope, localStorageService) {
                 var self = $scope;
+                var doctor;
+                var patient;
+                var usluga;
+                var gusluga;
+                var gpatient;
+                var gdoctor;
                 var groups = localStorageService.get("message");
-                function GroupClass(name, code, teacher, students)
+                var priems = localStorageService.get("message4");
+                $scope.groupForm = 'visible';
+                
+                $scope.modalForm='f';
+                function GroupClass(name, code, doctor, patient, usluga)
                 {
                     this.name = name;
                     this.code = code;
-                    this.teacher = teacher;
-                    this.students = students;
-                    
+                    this.doctor = doctor;
+                    this.patient = patient;
+                    this.usluga = usluga;
+                }
+                self.PickDoctor=function(pDoctor)
+                {
+                    doctor=pDoctor;
+                    console.log(doctor);
+                }
+                self.PickPatient=function(pPatient)
+                {
+                    patient=pPatient;
+                    console.log(patient)
+                }
+                self.PickUsluga=function(pUsluga)
+                {
+                    usluga=pUsluga;
+                    console.log(usluga)
                 }
                 self.CreateGroup = function() {
-                    var group = new GroupClass(self.group.name, self.group.code, "", []);
+                    var group = new GroupClass(self.group.name, self.group.code, self.group.doctor,self.group.patient,self.group.usluga);
+                    // group.doctor=gdoctor;
+                    // group.patient=gpatient;
+                    // group.usluga=this.usluga;
                     groups.push(group);
+                    
                     localStorageService.set("message", groups);
+                    $scope.groupForm = 'hidden';
+
+
                     //console.log(localStorageService.get("message"))
+                }
+                self.AddP = function() {
+                    $scope.modalForm='t';
+                }
+                var n=6,m=8;
+                var mas = [["pon","vtr","srd","4tvrg","pyatnc","subb"],["9:00","10:00","11","12","13","14","15","16"]]
+                console.log(mas);
+                self.RemoveGroup = function() {
+                    for (var i = 0; i < groups.length; i++) {
+                        if (groups[i].code == group.code) {
+                            groups.splice(i,i);
+                            localStorageService.set("message", groups);
+                            //console.log(localStorageService.get("message"))
+                        }
+                    }
                 }
             })
             .controller("addUslugaController", function($scope, localStorageService) {
@@ -114,9 +170,6 @@
                     localStorageService.set("message1", uslugi);
                     //console.log(localStorageService.get("message"))
                 }
-                $scope.deleteUsluga = function(index){ 
-                $scope.uslugi.splice(index, 1); 
-                localStorageService.set("message1", $scope.uslugi);}
                 $scope.uslugaInfo;
                 $scope.goFor = function(url) {
                     $location.path(url);
@@ -125,7 +178,6 @@
                     $location.path(url);
                     $scope.uslugaInfo = usluga;
                 }
-               
             })
             .controller("addPatientController", function($scope, localStorageService) {
                 var self = $scope;
@@ -141,17 +193,6 @@
                     patienty.push(patient);
                     localStorageService.set("message3", patienty);
                     //console.log(localStorageService.get("message"))
-                }
-                 $scope.deletePatient = function(index){ 
-                $scope.patienty.splice(index, 1); 
-                localStorageService.set("message3", $scope.patienty);}
-                 $scope.patientInfo;
-                $scope.goFor = function(url) {
-                    $location.path(url);
-                }
-                $scope.goToPatient = function(url, patient){
-                    $location.path(url);
-                    $scope.patientInfo = patient;
                 }
             })
             .controller("addDoctorController", function($scope, localStorageService) {
@@ -178,88 +219,28 @@
                     $scope.doctorInfo = doctor;
                 }
             })
-            .controller("studentController", function($scope, localStorageService) {
-                var self = $scope;
-                var group;
-                var usluga;
-                // var usligi = localStorageService.get("message1");
-                var groups = localStorageService.get("message");
-                function StudentClass(name, surname, GPA, cource)
-                {
-                    this.name = name;
-                    this.surname = surname;
-                    this.GPA = GPA;
-                    this.cource = cource;
-
-                    this.GetGPA = function()
-                    {
-                        return this.GPA;
-                    }
-                    this.GetCource = function()
-                    {
-                        return this.cource;
-                    }
-                }
-                self.pickGroup = function(pGroup) {
-                    group = pGroup;
-                    console.log(group);
-                }
-                self.pickUsluga = function(pUsluga) {
-                    usluga = pUsluga;
-                    console.log(usluga);
-                }
-
-                self.CreateStudent = function() {
-                    var student = new StudentClass(self.student.name, self.student.surname, self.student.GPA, self.student.cource);
-                    for (var i = 0; i < groups.length; i++) {
-                        if (groups[i].name == group.name) {
-                            group.students.push(student);
-                            groups[i] = group;
-                            localStorageService.set("message", groups);
-                            //console.log(localStorageService.get("message"))
-                        }
-                    }
-                }
-            })
-            
             .controller("groupController", function($scope) {
                 var self = $scope;
-                self.students = self.groupInfo.students;
-                self.teacher = self.groupInfo.teacher;
+                self.doctor = self.groupInfo.doctor;
+                self.patient = self.groupInfo.patient;
+                self.usluga = self.groupInfo.usluga;
+                // self.date = self.groupInfo.date;
+                // self.time = self.groupInfo.time;
             })
-            .controller('ExampleController', function($scope,localStorageService) {
-               // $scope.patienty = localStorageService.get("message3");
-                $scope.uslugi =  localStorageService.get("message1");
-
-                      // $scope.data = {
-                      //  model: null,
-                      //   availableOptions: [
-                      //   {id: '1', name: 'Option A'},
-                      //   {id: '2', name: 'Option B'},
-                      //   {id: '3', name: 'Option C'}
-                      //     ]
-                      //   };
-                    })
-
 </script>
- <style>
-    body {
-        background: #f1f1f1 url(images/1.jpg) no-repeat center fixed; /* Фоновый цвет и фоновый рисунок*/
-        color: #767676; /*Цвет текста на странице*/
-        background-attachment: fixed; /* Фон страницы фиксируется */
-        background-repeat: repeat-x; /* Изображение повторяется по горизонтали */
-    }
-   </style>
 </head>
 
 <body ng-app="Example">
 	<div ng-controller="mainController">
         <button ng-click="goTo('')">Главная</button>
-        <button ng-click="goTo('/CreateStudent')">Добавить прием</button>
+        <button ng-click="goTo('/CreateGroup')">Добавить Прием</button>
         <button ng-click="goTo('/CreateUsluga')">Добавить Услугу</button>
         <button ng-click="goTo('/CreatePatient')">Добавить Пациента</button>
         <button ng-click="goTo('/CreateDoctor')">Добавить Врача</button>
-		<div ng-repeat="group in groups" ng-click="goToGroup('/group', group)">{{group.name}}</div>
+        <button ng-click="goTo('/ViewDoctors')">Spisok vrachei</button>
+        <button ng-click="goTo('/ViewUslugi')">Spisok uslug</button>
+        <button ng-click="goTo('/ViewPriem')">Spisok priemov</button>
+        <button ng-click="goTo('/ViewRasp')">Расписание</button>
         
 		<div ng-view>
 

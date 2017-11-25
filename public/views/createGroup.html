@@ -3,14 +3,55 @@
         <h3>Добавить Группу</h3>
     </div>
     <div>
-        <div>Название группы</div>
+        <div>Название priema</div>
         <input class="" type="text" ng-model="group.name">
     </div>
     <div>
-        <div>Шифр группы</div>
+        <div>Номер приема</div>
         <input class="" type="text" ng-model="group.code">
     </div>
+	
+
+    <Label for="docPage">Doctor: </Label>
+    <select name="docPage" ng-model="group.doctor" ng-options="doctor.name for doctor in doctors"></select>
+
+    <label for="uslPage">Usluga: </label>
+    <select name="uslPage" ng-model="group.usluga" ng-options="usluga.name for usluga in uslugi"></select>
+
+    <Label for="patPage">Patient: </Label>
+    <select name="patPage" ng-model="group.patient" ng-options="patient.name for patient in patienty"></select>
+
     <div>
         <button class="" ng-click="CreateGroup()">Add group</button>
     </div>
 </div>
+
+
+
+
+
+<!-- <div ng-controller="addGroupController">
+            <form name="myForm">
+             <label for="repeatSelect"> Выберите врача: </label>
+               <select name="repeatSelect" id="repeatSelect" ng-model="group.doctor">
+                <option ng-repeat="doctor in doctors" value="{{doctor.name}}">{{doctor.name}}</option>
+               </select>
+            </form>
+          <tt>Врач : {{group.doctor}}</tt><br/>
+         </div>
+    <div>
+        <div>Выберите uslugu</div>
+        <div class="div1" ng-repeat="usluga in uslugi" ng-click="PickUsluga(usluga)" ng-model="group.usluga">{{usluga.name}}</div>
+    </div> 
+    <div>
+        <div>Выберите patient</div>
+        <div class="div1" ng-repeat="patient in patienty" ng-click="PickPatient(patient)" ng-model="group.patient">{{patient.name}}</div>
+    </div>   -->
+    <!-- <label for="docPage">Doctor: </label>
+    <select name="docPage" ng-model="group.doctor">
+        <option ng-selected="PickDoctor(doctor)"
+                ng-repeat="doctor in doctors"
+                value="{{doctor}}">
+                {{doctor.name}}
+        </option> 
+    </select>  -->

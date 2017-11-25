@@ -1,16 +1,17 @@
 <div>
-	<div class="group">
-		<h3>Группа: {{groupInfo.name}}</h3>
+	<div class="group in groups">
+		<h3>Priem: {{groupInfo.name}}</h3>
 	</div>
-	<div class="teacher">
-		<h3>Учитель: {{teacher.name}} {{teacher.surname}}</h3>
+	<div class="doctor">
+		<h3>Doctor: {{groupInfo.doctor.name}}</h3>
 	</div>
-	<div class="student">
-		<div>
-			<h3>Students list:</h3>
-		</div>
-		<div ng-repeat="student in students">
-			<p>{{student.name}}</p>
-		</div>
+	<div>
+		<h3>Patient: {{groupInfo.patient.name}}</h3>
 	</div>
+	<div>
+		<h3>Usluga: {{groupInfo.usluga.name}}</h3>
+	</div>
+	<!-- <div ng-repeat="group in groups">
+		{{group.name}}
+	</div> -->
 </div>

@@ -6,17 +6,12 @@
         <div>Название услуги</div>
         <input class="" type="text" ng-model="usluga.name">
     </div>
-    <br>
     <div>
-        <button class="btn btn-large btn-info" ng-click="CreateUsluga()">Add usluga</button>
+        <button class="" ng-click="CreateUsluga()">Add usluga</button>
     </div>
    
     <div class="usluga">
         <h3>Услуги: {{usluga.name}}</h3>
-         <div ng-repeat="usluga in uslugi">
-         <h4>{{usluga.name}}</h4>
-         <button class="btn btn-danger" ng-click="deleteUsluga()">delete</button>
-         </div>
-
+         <div ng-repeat="usluga in uslugi">{{usluga.name}}</div>
     </div>
 </div>
