@@ -1,3 +1,8 @@
-<div ng-repeat="doctor in doctors">
-        {{doctor.name}}
-</div>
+ <div class="doctor">
+        <h3>Врачи: </h3>
+         <div ng-repeat="doctor in doctors">
+         <h4>{{doctor.name}} {{doctor.surname}}</h4>
+         <button class="btn btn-danger" ng-click="deleteStudent(student._id)">delete</button>
+         </div>
+
+    </div>

@@ -1,28 +1,27 @@
-<div class="">
+<div class="" style="text-align: center">
     <div>
-        <h3>Добавить Группу</h3>
-    </div>
-    <div>
-        <div>Название priema</div>
-        <input class="" type="text" ng-model="group.name">
+        <h3>Добавить Прием</h3>
     </div>
     <div>
         <div>Номер приема</div>
         <input class="" type="text" ng-model="group.code">
     </div>
-	
-
-    <Label for="docPage">Doctor: </Label>
+    <div>
+        <div>Название приема</div>
+        <input class="" type="text" ng-model="group.name">
+    </div><br>
+    <div>
+    <Label for="docPage">Врач: </Label>
     <select name="docPage" ng-model="group.doctor" ng-options="doctor.name for doctor in doctors"></select>
 
-    <label for="uslPage">Usluga: </label>
+    <label for="uslPage">Услуга: </label>
     <select name="uslPage" ng-model="group.usluga" ng-options="usluga.name for usluga in uslugi"></select>
 
-    <Label for="patPage">Patient: </Label>
+    <Label for="patPage">Пациент: </Label>
     <select name="patPage" ng-model="group.patient" ng-options="patient.name for patient in patienty"></select>
-
+</div><br>
     <div>
-        <button class="" ng-click="CreateGroup()">Add group</button>
+        <button class="btn btn-large btn-success" ng-click="CreateGroup()">Добавить прием</button>
     </div>
 </div>
 
