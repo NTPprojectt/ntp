@@ -146,6 +146,9 @@
 
                     //console.log(localStorageService.get("message"))
                 }
+                 $scope.deletePriem = function(index){ 
+                $scope.groups.splice(index, 1); 
+                localStorageService.set("message4", $scope.groups);}
                 self.AddP = function() {
                     $scope.modalForm='t';
                 }
