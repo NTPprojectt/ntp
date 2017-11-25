@@ -109,66 +109,44 @@
                     <div>
                         <button ng-click="AddP()">Add</button>
                     </div>
-                    <div>
-                        <p>{{group.code}}</p>
-                        <p>{{group.doctor.name}}</p>
-                        <p>{{group.usluga.name}}</p>
-                    </div>
-                    <div ng-if="modalForm=='t'">
-                   
-                            <div ng-controller="addGroupController">
-                             <div ng-show="groupForm == 'visible'">
-                             <div class="form-group">
-                                    <div>
-                                        <h3>Добавить Группу</h3>
-                                    </div>
-                                    <div>
-                                        <div>Название priema</div>
-                                        <input class="" type="text" ng-model="group.name">
-                                    </div>
-                                    <div>
-                                        <div>Номер приема</div>
-                                        <input class="" type="text" ng-model="group.code">
-                                    </div>
-                                    
-                                
-                                    <Label for="docPage">Doctor: </Label>
-                                    <select name="docPage" ng-model="group.doctor" ng-options="doctor.name for doctor in doctors"></select>
-                                
-                                    <label for="uslPage">Usluga: </label>
-                                    <select name="uslPage" ng-model="group.usluga" ng-options="usluga.name for usluga in uslugi"></select>
-                                
-                                    <Label for="patPage">Patient: </Label>
-                                    <select name="patPage" ng-model="group.patient" ng-options="patient.name for patient in patienty"></select>
-                                
-                                    <div>
-                                        <button class="" ng-click="CreateGroup()">save</button>
-                                    </div>
-                                    
-                                </div>
-                                </div>
-                    </div>
-                    
-                    <div class="form-group">
-                    
-                       <div class="group in groups" ng-hide="groupForm == 'visible'">
-                        <h3>Priem: {{groupInfo.name}}</h3>
+                    <div ng-controller="groupController" ng-if="modForm=='t'" ng-if="group.code==group.code">
+                        <div class="group in groups">
+                            <h3>Priem: {{groupInfo.name}}</h3>
                         </div>
-                         <div class="doctor" ng-hide="groupForm == 'visible'">
-                           <h3>Doctor: {{groupInfo.doctor.name}}</h3>
-                             </div>
-                               <div ng-hide="groupForm == 'visible'">
-                                <h3>Patient: {{groupInfo.patient.name}}</h3>
-                                 </div>
-                                    <div ng-hide="groupForm == 'visible'">
-                                      <h3>Usluga: {{groupInfo.usluga.name}}</h3>
-                                       
-    <!-- <div ng-repeat="group in groups">
-        {{group.name}}
-    </div> -->
-                     </div>
-                     </div>
-
+                        <div class="doctor">
+                            <h3>Doctor: {{groupInfo.doctor.name}}</h3>
+                        </div>
+                        <div>
+                            <h3>Patient: {{groupInfo.patient.name}}</h3>
+                        </div>
+                        <div>
+                            <h3>Usluga: {{groupInfo.usluga.name}}</h3>
+                        </div>
+                        <!-- <div ng-repeat="group in groups">
+                            {{group.name}}
+                        </div> -->
+                    </div>
+                    <div ng-controller="addGroupController" ng-if="modalForm=='t'">
+                        <Label for="gPage">Priem: </Label>
+                        <select name="gPage" ng-model="group" ng-options="group.name for group in groups"></select>
+                        <button ng-click="AddP()">Save</button>
+                    </div>
+                    <div ng-controller="groupController" ng-if="modForm=='t'">
+                        <div class="group in groups">
+                            <h3>Priem: {{groupInfo.name}}</h3>
+                        </div>
+                        <div class="doctor">
+                            <h3>Doctor: {{groupInfo.doctor.name}}</h3>
+                        </div>
+                        <div>
+                            <h3>Patient: {{groupInfo.patient.name}}</h3>
+                        </div>
+                        <div>
+                            <h3>Usluga: {{groupInfo.usluga.name}}</h3>
+                        </div>
+                        <!-- <div ng-repeat="group in groups">
+                            {{group.name}}
+                        </div> -->
                     </div>
                 </td>
                 <td></td>

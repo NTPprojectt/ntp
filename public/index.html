@@ -103,6 +103,7 @@
                 var groups = localStorageService.get("message");
                 var priems = localStorageService.get("message4");
                 $scope.groupForm = 'visible';
+                $scope.modForm='f';
                 
                 $scope.modalForm='f';
                 function GroupClass(name, code, doctor, patient, usluga)
@@ -134,15 +135,18 @@
                     // group.patient=gpatient;
                     // group.usluga=this.usluga;
                     groups.push(group);
-                    
+                    $scope.modalForm='f';
                     localStorageService.set("message", groups);
                     $scope.groupForm = 'hidden';
+                    $scope.modForm='t';
+                    
 
 
                     //console.log(localStorageService.get("message"))
                 }
                 self.AddP = function() {
                     $scope.modalForm='t';
+                    $scope.modForm='f';
                 }
                 var n=6,m=8;
                 var mas = [["pon","vtr","srd","4tvrg","pyatnc","subb"],["9:00","10:00","11","12","13","14","15","16"]]
