@@ -1,4 +1,10 @@
 <div class="doctor" style="text-align: center">
+ <style>
+   body {
+    background-image: url(img/hospitaldoctors.jpg); /* Путь к фоновому изображению */
+    background-color: #c7b39b; /* Цвет фона */
+   }
+  </style>
     <div>
         <h3>Добавить Врача</h3>
     </div>
@@ -15,7 +21,7 @@
         <input class="" type="text" ng-model="doctor.speciality">
     </div><br>
     <div>
-        <button class="btn btn-large btn-info" ng-click="CreateDoctor()">Добавить врача</button>
+        <button class="btn btn-large btn-success" ng-click="CreateDoctor()">Добавить врача</button>
     </div>
    <!--  <div class="doctor">
         <h3>Врачи: </h3>

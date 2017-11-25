@@ -9,6 +9,10 @@
 		.module("Example",['ngRoute', 'LocalStorageModule'])
 			.config(function($routeProvider){
         		$routeProvider
+                .when("/", {
+                    templateUrl : "views/glavnaya.html"
+                
+                })
 	            .when("/CreateGroup", {
 	                templateUrl : "views/CreateGroup.html",
 	                controller : "addGroupController"
@@ -260,16 +264,19 @@
 <body ng-app="Example">
 	<div ng-controller="mainController" style="text-align: center">
     <br>
-        <button ng-click="goTo('')">Главная</button>
-        <button ng-click="goTo('/CreateGroup')">Добавить Прием</button>
-        <button ng-click="goTo('/CreateUsluga')">Добавить Услугу</button>
-        <button ng-click="goTo('/CreatePatient')">Добавить Пациента</button>
-        <button ng-click="goTo('/CreateDoctor')">Добавить Врача</button>
-        <button ng-click="goTo('/ViewDoctors')">Список врачей</button>
-        <button ng-click="goTo('/ViewUslugi')">Список услуг</button>
-        <button ng-click="goTo('/ViewPatient')">Список пациентов</button>
-        <button ng-click="goTo('/ViewPriem')">Список приемов</button>
-        <button ng-click="goTo('/ViewRasp')">Расписание</button>
+        <button class="btn btn-info" ng-click="goTo('')">Главная</button>
+        <button class="btn btn-info" ng-click="goTo('/CreateDoctor')">Добавить Врача</button>
+        <button class="btn btn-info" ng-click="goTo('/CreateUsluga')">Добавить Услугу</button>
+        <button class="btn btn-info" ng-click="goTo('/CreatePatient')">Добавить Пациента</button>
+        <button class="btn btn-info" ng-click="goTo('/CreateGroup')">Добавить Прием</button>
+        
+        
+        
+        <button class="btn btn-info" ng-click="goTo('/ViewDoctors')">Список врачей</button>
+        <button class="btn btn-info" ng-click="goTo('/ViewUslugi')">Список услуг</button>
+        <button class="btn btn-info" ng-click="goTo('/ViewPatient')">Список пациентов</button>
+        <button class="btn btn-info" ng-click="goTo('/ViewPriem')">Список приемов</button>
+        <button class="btn btn-info" ng-click="goTo('/ViewRasp')">Расписание</button>
         
 		<div ng-view>
 

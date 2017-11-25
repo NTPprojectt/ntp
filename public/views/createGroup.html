@@ -1,4 +1,10 @@
 <div class="" style="text-align: center">
+<style>
+   body {
+    background-image: url(img/Reasons-360-Degree-Feedback-for-Doctors-Makes-a-Hospital-Better.jpg); /* Путь к фоновому изображению */
+    background-color: #c7b39b; /* Цвет фона */
+   }
+  </style>
     <div>
         <h3>Добавить Прием</h3>
     </div>
@@ -21,7 +27,7 @@
     <select name="patPage" ng-model="group.patient" ng-options="patient.name for patient in patienty"></select>
 </div><br>
     <div>
-        <button class="btn btn-large btn-success" ng-click="CreateGroup()">Добавить прием</button>
+        <button class="btn btn-large btn-primary" ng-click="CreateGroup()">Добавить прием</button>
     </div>
 </div>
 

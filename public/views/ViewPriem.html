@@ -1,4 +1,10 @@
 <br><br>
+<style>
+   body {
+    background-image: url(img/Reasons-360-Degree-Feedback-for-Doctors-Makes-a-Hospital-Better.jpg); /* Путь к фоновому изображению */
+    background-color: #c7b39b; /* Цвет фона */
+   }
+  </style>
 <div ng-repeat="group in groups" ng-click="goToGroup('/group', group)">
    <h4> {{group.code}} {{group.name}}</h4>
    <button class="btn  btn-danger btn-sm" ng-click="deletePriem()">Удалить</button>
