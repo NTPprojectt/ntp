@@ -1,6 +1,13 @@
 <div class="usluga">
+<style>
+   body {
+    background-image: url(img/osteogoodhealth-md.jpg); /* Путь к фоновому изображению */
+    background-color: #c7b39b; /* Цвет фона */
+   }
+  </style>
         <h3>Услуги: </h3>
          <div ng-repeat="usluga in uslugi">
-         <h4>{{usluga.name}} <button class="btn  btn-warning btn-sm" ng-click="deleteUsluga()">Удалить</button></h4>
+         <h4>{{usluga.name}} </h4>
+         <button class="btn  btn-warning btn-sm" ng-click="deleteUsluga()">Удалить</button>
          </div>
 </div>

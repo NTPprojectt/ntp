@@ -1,7 +1,14 @@
  <div class="patient">
+ <style>
+   body {
+    background-image: url(img/doctor-1461911723OIY-1024x683.jpg); /* Путь к фоновому изображению */
+    background-color: #c7b39b; /* Цвет фона */
+   }
+  </style>
         <h3>Пациенты: </h3>
          <div ng-repeat="patient in patienty">
-         <h4>{{patient.name}} {{patient.surname}}  <button class="btn  btn-warning btn-sm" ng-click="deletePatient()">Удалить</button></h4>
+         <h4>{{patient.name}} {{patient.surname}} </h4>
+          <button class="btn  btn-warning btn-sm" ng-click="deletePatient()">Удалить</button>
         
          </div>
 

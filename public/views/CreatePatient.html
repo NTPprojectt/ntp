@@ -1,4 +1,11 @@
 <div class="patient" style="text-align: center">
+<style>
+   body {
+    background-image: url(img/doctor-1461911723OIY-1024x683.jpg); /* Путь к фоновому изображению */
+    background-color: #c7b39b; /* Цвет фона */
+   }
+  </style>
+
     <div>
         <h3>Добавить Пациента</h3>
     </div>
@@ -15,10 +22,10 @@
         <input class="" type="text" ng-model="patient.phone">
     </div><br>
     <div>
-        <button class="btn bnt-large btn-default" ng-click="CreatePatient()">Добавить пациента</button>
+        <button class="btn bnt-large btn" ng-click="CreatePatient()">Добавить пациента</button>
     </div>
-    <div class="patient">
-            <h3>Patient: {{patient.name}} {{patient.surname}}</h3>
+    <!-- <div class="patient">
+            <h3>Пациенты: {{patient.name}} {{patient.surname}}</h3>
              <div ng-repeat="patient in patinety">{{patient.name}} {{patient.surname}}</div>
-        </div>
+        </div> -->
 </div>
