@@ -3,6 +3,7 @@
 <script src="/bower_components/angular/angular.min.js"></script>
 <script src="/bower_components/angular-route/angular-route.js"></script>
 <script src="/bower_components/angular-local-storage.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script type="text/javascript">
 	var app = angular
 		.module("Example",['ngRoute', 'LocalStorageModule'])
@@ -36,6 +37,10 @@
                     templateUrl:"views/ViewUslugi.html",
                     controller:"addUslugaController" 
                 })
+                .when("/ViewPatient",{
+                    templateUrl:"views/ViewPatient.html",
+                    controller:"addPatientController" 
+                })
                 .when("/ViewPriem",{
                     templateUrl:"views/ViewPriem.html",
                     controller:"addGroupController"
@@ -60,6 +65,7 @@
                     $location.path(url);
                     $scope.groupInfo = group;
                 }
+                
                 if (localStorageService.get("message") != null) {
                     $scope.groups = localStorageService.get("message");
                 } else {
@@ -100,10 +106,14 @@
                 var gusluga;
                 var gpatient;
                 var gdoctor;
+                var g;
                 var groups = localStorageService.get("message");
                 var priems = localStorageService.get("message4");
                 $scope.groupForm = 'visible';
+                $scope.groupInf;
                 $scope.modForm='f';
+                $scope.mForm='f';
+                
                 
                 $scope.modalForm='f';
                 function GroupClass(name, code, doctor, patient, usluga)
@@ -138,15 +148,22 @@
                     $scope.modalForm='f';
                     localStorageService.set("message", groups);
                     $scope.groupForm = 'hidden';
-                    $scope.modForm='t';
+                    $scope.modForm='f';
                     
 
 
                     //console.log(localStorageService.get("message"))
                 }
+                 $scope.deletePriem = function(index){ 
+                $scope.groups.splice(index, 1); 
+                localStorageService.set("message4", $scope.groups);}
                 self.AddP = function() {
                     $scope.modalForm='t';
-                    $scope.modForm='f';
+                    
+                }
+                $scope.goToG =function(){
+                    $scope.modalForm='f';
+                    $scope.mForm='t';
                 }
                 var n=6,m=8;
                 var mas = [["pon","vtr","srd","4tvrg","pyatnc","subb"],["9:00","10:00","11","12","13","14","15","16"]]
@@ -174,6 +191,9 @@
                     localStorageService.set("message1", uslugi);
                     //console.log(localStorageService.get("message"))
                 }
+                 $scope.deleteUsluga = function(index){ 
+                $scope.uslugi.splice(index, 1); 
+                localStorageService.set("message1", $scope.uslugi);}
                 $scope.uslugaInfo;
                 $scope.goFor = function(url) {
                     $location.path(url);
@@ -198,6 +218,17 @@
                     localStorageService.set("message3", patienty);
                     //console.log(localStorageService.get("message"))
                 }
+                 $scope.deletePatient = function(index){ 
+                $scope.patienty.splice(index, 1); 
+                localStorageService.set("message3", $scope.patienty);}
+                 $scope.patientInfo;
+                $scope.goFor = function(url) {
+                    $location.path(url);
+                }
+                $scope.goToPatient = function(url, patient){
+                    $location.path(url);
+                    $scope.patientInfo = patient;
+                }
             })
             .controller("addDoctorController", function($scope, localStorageService) {
                 var self = $scope;
@@ -214,6 +245,11 @@
                     localStorageService.set("message2", doctors);
                     //console.log(localStorageService.get("message"))
                 }
+                 $scope.deleteDoctor = function(index){ 
+                $scope.doctors.splice(index, 1); 
+                localStorageService.set("message2", $scope.doctors
+                    );}
+
                 $scope.doctorInfo;
                 $scope.goFor = function(url) {
                     $location.path(url);
@@ -235,15 +271,17 @@
 </head>
 
 <body ng-app="Example">
-	<div ng-controller="mainController">
+	<div ng-controller="mainController" style="text-align: center">
+    <br>
         <button ng-click="goTo('')">Главная</button>
         <button ng-click="goTo('/CreateGroup')">Добавить Прием</button>
         <button ng-click="goTo('/CreateUsluga')">Добавить Услугу</button>
         <button ng-click="goTo('/CreatePatient')">Добавить Пациента</button>
         <button ng-click="goTo('/CreateDoctor')">Добавить Врача</button>
-        <button ng-click="goTo('/ViewDoctors')">Spisok vrachei</button>
-        <button ng-click="goTo('/ViewUslugi')">Spisok uslug</button>
-        <button ng-click="goTo('/ViewPriem')">Spisok priemov</button>
+        <button ng-click="goTo('/ViewDoctors')">Список врачей</button>
+        <button ng-click="goTo('/ViewUslugi')">Список услуг</button>
+        <button ng-click="goTo('/ViewPatient')">Список пациентов</button>
+        <button ng-click="goTo('/ViewPriem')">Список приемов</button>
         <button ng-click="goTo('/ViewRasp')">Расписание</button>
         
 		<div ng-view>

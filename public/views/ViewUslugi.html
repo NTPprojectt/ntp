@@ -1,4 +1,6 @@
-<div ng-repeat="usluga in uslugi">
-    {{usluga.name}}
-
+<div class="usluga">
+        <h3>Услуги: </h3>
+         <div ng-repeat="usluga in uslugi">
+         <h4>{{usluga.name}} <button class="btn  btn-warning btn-sm" ng-click="deleteUsluga()">Удалить</button></h4>
+         </div>
 </div>
