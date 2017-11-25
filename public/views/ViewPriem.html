@@ -1,6 +1,5 @@
+<br><br>
 <div ng-repeat="group in groups" ng-click="goToGroup('/group', group)">
-    {{group.code}}  <button class="btn  btn-warning btn-sm" ng-click="deletePriem()">Удалить</button>
-    <div>
-            <button ng-click="RemoveGroup()"></button>
-    </div>
+   <h4> {{group.code}} {{group.name}}</h4>
+   <button class="btn  btn-danger btn-sm" ng-click="deletePriem()">Удалить</button>
 </div>
