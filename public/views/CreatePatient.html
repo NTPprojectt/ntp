@@ -18,7 +18,7 @@
         <button class="btn bnt-large btn-default" ng-click="CreatePatient()">Добавить пациента</button>
     </div>
     <div class="patient">
-            <h3>Patient: {{patient.name}}</h3>
-             <div ng-repeat="patient in patinety">{{patient.name}}</div>
+            <h3>Patient: {{patient.name}} {{patient.surname}}</h3>
+             <div ng-repeat="patient in patinety">{{patient.name}} {{patient.surname}}</div>
         </div>
 </div>

@@ -198,9 +198,17 @@
                     localStorageService.set("message3", patienty);
                     //console.log(localStorageService.get("message"))
                 }
-                  $scope.deletePatient = function(index){ 
+                 $scope.deletePatient = function(index){ 
                 $scope.patienty.splice(index, 1); 
                 localStorageService.set("message3", $scope.patienty);}
+                 $scope.patientInfo;
+                $scope.goFor = function(url) {
+                    $location.path(url);
+                }
+                $scope.goToPatient = function(url, patient){
+                    $location.path(url);
+                    $scope.patientInfo = patient;
+                }
             })
             .controller("addDoctorController", function($scope, localStorageService) {
                 var self = $scope;
@@ -217,6 +225,11 @@
                     localStorageService.set("message2", doctors);
                     //console.log(localStorageService.get("message"))
                 }
+                 $scope.deleteDoctor = function(index){ 
+                $scope.doctors.splice(index, 1); 
+                localStorageService.set("message2", $scope.doctors
+                    );}
+
                 $scope.doctorInfo;
                 $scope.goFor = function(url) {
                     $location.path(url);
@@ -247,7 +260,7 @@
         <button ng-click="goTo('/CreateDoctor')">Добавить Врача</button>
         <button ng-click="goTo('/ViewDoctors')">Список врачей</button>
         <button ng-click="goTo('/ViewUslugi')">Список услуг</button>
-        <button ng-click="goTo('/ViewPatient')">Список пауиентов</button>
+        <button ng-click="goTo('/ViewPatient')">Список пациентов</button>
         <button ng-click="goTo('/ViewPriem')">Список приемов</button>
         <button ng-click="goTo('/ViewRasp')">Расписание</button>
         
